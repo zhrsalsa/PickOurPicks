@@ -1,0 +1,125 @@
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* background: linear-gradient(180deg, #001935, #020d1a);*/
+  color: white;
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: transparent;
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  text-align: left;
+}
+
+.headerImage {
+  margin: 1rem auto;
+  cursor: pointer; /* Menampilkan kursor tangan */
+}
+
+
+.main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formContainer {
+  background: transparent; /* Transparansi */
+  color: #ffffff;
+  padding: 2rem;
+  border-radius: 15px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.inputGroup {
+  text-align: left;
+}
+
+.label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #ffffff; /* Label tetap putih agar terlihat di background gelap */
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Transparan dan ringan */
+  background: rgba(255, 255, 255, 0.1); /* Latar belakang input sedikit transparan */
+  color: #ffffff;
+  border-radius: 5px;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.7); /* Placeholder tetap terlihat */
+}
+
+.togglePassword {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.button {
+  background-color: #ffffff;
+  color: #800020;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background-color: #800020;
+  color: #ffffff;
+}
+
+.redirect {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: #ffffff;
+}
+
+.redirect a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.footer {
+  padding: 1rem;
+  font-size: 0.875rem;
+  color: #aaaaaa;
+}
+
+.footer a {
+  color: #ffffff;
+  text-decoration: underline;
+}

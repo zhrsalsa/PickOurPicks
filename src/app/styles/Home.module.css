@@ -1,0 +1,243 @@
+/* Home.module.css */
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: transparent;
+  }
+  
+  .header h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    text-align: left;
+  }
+  
+  .nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .nav a {
+    color: white; /*#264414*/
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+    transition: all 0.3s ease;
+  }
+  
+  .nav a:hover {
+    background-color: white;
+    color: #800020;
+  }
+  
+  /* Hero Section */
+  .hero {
+    position: relative;
+    height: 40rem;
+  }
+  
+  .heroOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9));
+    border-bottom-color: #a0aec0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 0 1rem;
+  }
+  
+  .heroOverlay h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  }
+  
+  .heroOverlay p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    line-height: 1.5;
+  }
+  
+  .heroButton {
+    font-size: 1.2rem;
+    font-weight: bolder;
+    color: #800020;
+    background-color: white;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+  }
+  
+  .heroButton:hover {
+    background-color: #800020;
+    color: white;
+  }
+  
+  /* Content Section */
+  /* Feature Section Specific Styling */
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 3rem;
+    background-color: black;
+}
+
+.section h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: white;
+    width: 30%; /* Menentukan lebar untuk judul */
+}
+
+.trope-description {
+    font-size: 1rem;
+    color: #555; /* Warna teks abu-abu lembut */
+    margin: 0.5rem 0 1.5rem; /* Jarak atas dan bawah */
+    text-align: left; /* Posisi teks rata kiri */
+    font-family: 'Inter', sans-serif; /* Konsistensi font */
+  }   
+
+
+.feature-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Mengurangi lebar minimum kartu */
+    gap: 1.5rem; /* Mengurangi jarak antar kartu */
+    width: 65%; /* Menentukan lebar untuk kartu */
+}
+
+.feature-card {
+  width: 200px; /* Sesuaikan dengan ukuran yang Anda inginkan */
+  height: 300px; /* Sesuaikan dengan ukuran yang Anda inginkan */
+  background-size: cover; /* Gambar akan menutupi seluruh area kartu tanpa distorsi */
+  background-position: center; /* Fokus ke tengah gambar */
+  background-repeat: no-repeat; /* Mencegah pengulangan gambar */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+  color: white;
+  border-radius: 8px;
+  box-shadow: 
+  0 4px 8px rgba(0, 0, 0, 0.2), /* Shadow luar */
+  inset 0 -85px 20px rgba(0, 0, 0, 0.3), /* Shadow bawah */
+  inset 0 2px 4px rgba(0, 0, 0, 0.3), /* Shadow atas */
+  inset 2px 0 4px rgba(0, 0, 0, 0.3), /* Shadow kanan */
+  inset -2px 0 4px rgba(0, 0, 0, 0.3); /* Shadow kiri */  
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.feature-card h4 {
+    font-size: 1.rem; /* Mengurangi ukuran font judul */
+    font-weight: bold;
+    margin-bottom: 0.1rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8); /* Tambahkan shadow */
+}
+
+.feature-card p {
+    font-size: 0.7rem; /* Mengurangi ukuran font deskripsi */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8); /* Tambahkan shadow */
+}
+
+
+.feature-card:hover h4,
+.feature-card:hover p {
+  opacity: 0;
+}
+
+/* Feature Section */
+.fitur-section {
+    padding: 3rem 1rem;
+    text-align: center;
+  }
+  
+  .fitur-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .fitur-title-desc{
+    margin-bottom: 2rem;
+    color: #555;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .fitur-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+  
+  .fitur-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 0.3rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    max-width: 300px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .fitur-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .fitur-card h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #800020;
+    margin-bottom: 1rem;
+  }
+  
+  .fitur-card p {
+    font-size: 1rem;
+    color: #6c4242;
+    line-height: 1.5;
+  }  
+
+  
+  /* Utility Class */
+  .center-text {
+    text-align: center;
+  }  
+  
+  /* Footer */
+  .footer {
+    background-color: #1a202c;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .footer p {
+    font-size: 0.875rem;
+    color: #a0aec0;
+  }
+  
