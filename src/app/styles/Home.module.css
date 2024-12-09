@@ -99,12 +99,39 @@
     background-color: black;
 }
 
-.section h3 {
+.section-desc {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-desc h3 {
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 2rem;
     color: white;
-    width: 30%; /* Menentukan lebar untuk judul */
+    width: 50%; /* Menentukan lebar untuk judul */
+}
+
+.section-desc p {
+  color: white;
+}
+
+.section2-desc {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+
+.section2-desc h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: white;
+    width: 50%; /* Menentukan lebar untuk judul */
+}
+
+.section2-desc p {
+  color: white;
 }
 
 .trope-description {

@@ -39,7 +39,10 @@ export default function Home() {
       <main className="px-8 py-12">
         {/* Feature Section 1 */}
         <section id="found-family" className={`${styles.section} ${styles['section-right']}`}>
-          <h3>Found Family</h3>
+          <div className={styles['section-desc']}>
+            <h3>Found Family</h3>
+            <p>A family through bonds, not blood.</p>
+          </div>
           <div className={styles['feature-container']}>
             {/* Cards */}
             <div className={styles['feature-card']} style={{ backgroundImage: "url('/fbc.jpg')" }}>
@@ -82,7 +85,10 @@ export default function Home() {
               <p>Friends to Lovers</p>
             </div>
           </div>
-          <h3>Romance</h3>
+          <div className={styles['section2-desc']}>
+            <h3>Romance</h3>
+            <p>Something is in the air.</p>
+          </div>
         </section>
 
         <section id="fitur" className={styles["fitur-section"]}>
