@@ -1,15 +1,85 @@
-"use client";
+'use client';
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 import styles from "./signup.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Signup() {
-  const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+  const handleSignup = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    const name = (document.getElementById("name") as HTMLInputElement)?.value.trim();
+    const email = (document.getElementById("email") as HTMLInputElement)?.value.trim();
+    const password = (document.getElementById("password") as HTMLInputElement)?.value;
+    const confirmPassword = (document.getElementById("confirmPassword") as HTMLInputElement)?.value;
+
+    if (!name || !email || !password || !confirmPassword) {
+      alert("All fields are required!");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address!");
+      return;
+    }
+
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters long!");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+    const userExists = users.find((user: { email: string }) => user.email === email);
+    if (userExists) {
+      alert("Email is already registered. Please log in or use another email.");
+      return;
+    }
+
+    const newUser = {
+      id: new Date().getTime().toString(), 
+      name,
+      email,
+      password,
+    };
+
+    users.push(newUser);
+    localStorage.setItem("users", JSON.stringify(users));
+
+    console.log("New user registered:", newUser); 
+
+    try {
+      const result = await signIn("credentials", {
+        email,
+        password,
+        users: JSON.stringify(users), 
+        redirect: false,
+      });
+
+      if (result?.error) {
+        console.error("Error during auto-login:", result.error);
+        alert("An error occurred during login. Please try to log in manually.");
+        router.push("/login");
+        return;
+      }
+
+      alert("Signup successful! Redirecting to homepage...");
+      router.push("/homepage");
+    } catch (error) {
+      console.error("Error during auto-login:", error);
+      alert("An unexpected error occurred. Please try again later.");
+    }
   };
 
   return (
@@ -58,18 +128,11 @@ export default function Signup() {
               <div style={{ position: "relative" }}>
                 <input
                   className={styles.input}
-                  type={showPassword ? "text" : "password"}
+                  type="password"
                   id="password"
                   placeholder="Create a password"
                   required
                 />
-                <button
-                  type="button"
-                  onClick={togglePasswordVisibility}
-                  className={styles.togglePassword}
-                >
-                  {showPassword ? "Hide" : "Show"}
-                </button>
               </div>
             </div>
             <button type="submit" className={styles.button}>

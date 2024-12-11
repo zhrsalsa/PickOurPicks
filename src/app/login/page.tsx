@@ -1,20 +1,48 @@
 "use client";
 
 import { useState } from "react";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import styles from "./login.module.css";
 import Link from "next/link"; // Sudah di-import
 import Image from "next/image";
 
 export default function Login() {
-  const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+  const handleLogin = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    const email = (document.getElementById("email") as HTMLInputElement).value;
+    const password = (document.getElementById("password") as HTMLInputElement).value;
+
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+    try {
+      const result = await signIn("credentials", {
+        email,
+        password,
+        users: JSON.stringify(users), 
+        redirect: false,
+      });
+
+      console.log("Login result:", result);
+
+      if (result?.error) {
+        alert("Invalid email or password. Please try again.");
+        return;
+      }
+
+      alert("Login successful! Redirecting to homepage...");
+      router.push("/homepage");
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("An unexpected error occurred. Please try again later.");
+    }
   };
 
   return (
     <div className={styles.pageContainer}>
-      {/* Bungkus Image dengan Link */}
       <Link href="/">
         <Image
           src="/headerimg.png" // Pastikan nama file dan path sesuai
@@ -47,18 +75,11 @@ export default function Login() {
               <div style={{ position: "relative" }}>
                 <input
                   className={styles.input}
-                  type={showPassword ? "text" : "password"}
+                  type="password"
                   id="password"
                   placeholder="Create a password"
                   required
                 />
-                <button
-                  type="button"
-                  onClick={togglePasswordVisibility}
-                  className={styles.togglePassword}
-                >
-                  {showPassword ? "Hide" : "Show"}
-                </button>
               </div>
             </div>
             <button type="submit" className={styles.button}>
