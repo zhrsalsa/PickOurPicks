@@ -1,57 +1,64 @@
-/* homepage.module.css */
+/* src/app/homepage/homepage.module.css */
 
-/* Header styling */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .profileIcon {
-    border-radius: 50%;
-    cursor: pointer;
-  }
-  
-  /* Main styling */
-  .main {
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .searchSection {
-    margin-bottom: 20px;
-  }
-  
-  .searchBar {
-    width: 80%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  .popularTropes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-  }
-  
-  .tropeButton {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .tropeButton:hover {
-    background-color: #0056b3;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: transparent;
+}
+
+.header img {
+  max-height: 50px;
+  object-fit: contain;
+}
+
+.header img:hover {
+  cursor: pointer;
+}
+
+.profileIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.main {
+  padding: 20px;
+  text-align: center;
+}
+
+.searchSection {
+  margin-bottom:  20px;
+}
+
+.searchBar {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.popularTropes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.tropeButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.tropeButton:hover {
+  background-color: #0056b3;
+}

@@ -1,8 +1,7 @@
-'use client';
+/* src/app/signup/page.tsx */
+"use client";
 
-import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
 import styles from "./signup.module.css";
 import Link from "next/link";
 import Image from "next/image";
@@ -13,18 +12,17 @@ export default function Signup() {
   const handleSignup = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    const name = (document.getElementById("name") as HTMLInputElement)?.value.trim();
-    const email = (document.getElementById("email") as HTMLInputElement)?.value.trim();
-    const password = (document.getElementById("password") as HTMLInputElement)?.value;
-    const confirmPassword = (document.getElementById("confirmPassword") as HTMLInputElement)?.value;
+    const name = (document.getElementById("name") as HTMLInputElement).value.trim();
+    const email = (document.getElementById("email") as HTMLInputElement).value.trim();
+    const password = (document.getElementById("password") as HTMLInputElement).value;
+    const confirmPassword = (document.getElementById("confirmPassword") as HTMLInputElement).value;
 
     if (!name || !email || !password || !confirmPassword) {
       alert("All fields are required!");
       return;
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       alert("Please enter a valid email address!");
       return;
     }
@@ -39,45 +37,26 @@ export default function Signup() {
       return;
     }
 
-    const users = JSON.parse(localStorage.getItem("users") || "[]");
-
-    const userExists = users.find((user: { email: string }) => user.email === email);
-    if (userExists) {
-      alert("Email is already registered. Please log in or use another email.");
-      return;
-    }
-
-    const newUser = {
-      id: new Date().getTime().toString(), 
-      name,
-      email,
-      password,
-    };
-
-    users.push(newUser);
-    localStorage.setItem("users", JSON.stringify(users));
-
-    console.log("New user registered:", newUser); 
-
     try {
-      const result = await signIn("credentials", {
-        email,
-        password,
-        users: JSON.stringify(users), 
-        redirect: false,
+      const response = await fetch("/api/user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password, confirmPassword }),
       });
 
-      if (result?.error) {
-        console.error("Error during auto-login:", result.error);
-        alert("An error occurred during login. Please try to log in manually.");
-        router.push("/login");
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(data.message || "An error occurred. Please try again.");
         return;
       }
 
-      alert("Signup successful! Redirecting to homepage...");
-      router.push("/homepage");
+      alert("Signup successful! Redirecting to login page...");
+      router.push("/login");
     } catch (error) {
-      console.error("Error during auto-login:", error);
+      console.error("Error during signup:", error);
       alert("An unexpected error occurred. Please try again later.");
     }
   };
@@ -86,17 +65,17 @@ export default function Signup() {
     <div className={styles.pageContainer}>
       <Link href="/">
         <Image
-          src="/headerimg.png" // Pastikan nama file dan path sesuai
+          src="/headerimg.png"
           alt="Pick Our Picks"
-          width={65} // Atur lebar sesuai kebutuhan
-          height={20} // Atur tinggi sesuai kebutuhan
+          width={65}
+          height={20}
           priority
           className={styles.headerImage}
         />
       </Link>
       <main className={styles.main}>
         <div className={styles.formContainer}>
-          <form className={styles.form}>
+          <form className={styles.form} onSubmit={handleSignup}>
             <div className={styles.inputGroup}>
               <label className={styles.label} htmlFor="name">
                 Name
@@ -125,15 +104,25 @@ export default function Signup() {
               <label className={styles.label} htmlFor="password">
                 Password
               </label>
-              <div style={{ position: "relative" }}>
-                <input
-                  className={styles.input}
-                  type="password"
-                  id="password"
-                  placeholder="Create a password"
-                  required
-                />
-              </div>
+              <input
+                className={styles.input}
+                type="password"
+                id="password"
+                placeholder="Create a password"
+                required
+              />
+            </div>
+            <div className={styles.inputGroup}>
+              <label className={styles.label} htmlFor="confirmPassword">
+                Confirm Password
+              </label>
+              <input
+                className={styles.input}
+                type="password"
+                id="confirmPassword"
+                placeholder="Re-enter your password"
+                required
+              />
             </div>
             <button type="submit" className={styles.button}>
               Sign Up
@@ -149,4 +138,4 @@ export default function Signup() {
       </footer>
     </div>
   );
-}
+} 

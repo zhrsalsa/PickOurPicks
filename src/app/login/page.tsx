@@ -1,10 +1,11 @@
+
+/* src/app/login/page.tsx */
 "use client";
 
-import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import styles from "./login.module.css";
-import Link from "next/link"; // Sudah di-import
+import Link from "next/link";
 import Image from "next/image";
 
 export default function Login() {
@@ -16,20 +17,15 @@ export default function Login() {
     const email = (document.getElementById("email") as HTMLInputElement).value;
     const password = (document.getElementById("password") as HTMLInputElement).value;
 
-    const users = JSON.parse(localStorage.getItem("users") || "[]");
-
     try {
       const result = await signIn("credentials", {
         email,
         password,
-        users: JSON.stringify(users), 
         redirect: false,
       });
 
-      console.log("Login result:", result);
-
       if (result?.error) {
-        alert("Invalid email or password. Please try again.");
+        alert(result.error);
         return;
       }
 
@@ -45,17 +41,17 @@ export default function Login() {
     <div className={styles.pageContainer}>
       <Link href="/">
         <Image
-          src="/headerimg.png" // Pastikan nama file dan path sesuai
+          src="/headerimg.png"
           alt="Pick Our Picks"
-          width={65} // Atur lebar sesuai kebutuhan
-          height={20} // Atur tinggi sesuai kebutuhan
+          width={65}
+          height={20}
           priority
           className={styles.headerImage}
         />
       </Link>
       <main className={styles.main}>
         <div className={styles.formContainer}>
-          <form className={styles.form}>
+          <form className={styles.form} onSubmit={handleLogin}>
             <div className={styles.inputGroup}>
               <label className={styles.label} htmlFor="email">
                 Email
@@ -72,22 +68,20 @@ export default function Login() {
               <label className={styles.label} htmlFor="password">
                 Password
               </label>
-              <div style={{ position: "relative" }}>
-                <input
-                  className={styles.input}
-                  type="password"
-                  id="password"
-                  placeholder="Create a password"
-                  required
-                />
-              </div>
+              <input
+                className={styles.input}
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                required
+              />
             </div>
             <button type="submit" className={styles.button}>
               Login
             </button>
           </form>
           <p className={styles.redirect}>
-            Don't have an account? <Link href="/signup">Sign Up</Link>
+            Don’t have an account? <Link href="/signup">Sign Up</Link>
           </p>
         </div>
       </main>
@@ -96,4 +90,4 @@ export default function Login() {
       </footer>
     </div>
   );
-}
+} 

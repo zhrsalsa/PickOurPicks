@@ -1,14 +1,19 @@
-// page.tsx for homepage
-
+// src/app/homepage/page.tsx
 import React from "react";
+import Image from "next/image";
 import styles from "./homepage.module.css";
 
 const Homepage = () => {
   return (
     <div>
-      {/* Header */}
       <header className={styles.header}>
-        <h1>Pick Our Picks</h1>
+        <Image
+          src="/headerimg.png"
+          alt="Pick Our Picks"
+          width={65}
+          height={20}
+          priority
+        />
         <img
           src="/profile-icon.png"
           alt="Profile Icon"
@@ -16,9 +21,7 @@ const Homepage = () => {
         />
       </header>
 
-      {/* Main Content */}
       <main className={styles.main}>
-        {/* Search Section */}
         <section className={styles.searchSection}>
           <input
             type="text"
@@ -27,7 +30,6 @@ const Homepage = () => {
           />
         </section>
 
-        {/* Popular Tropes */}
         <section className={styles.popularTropes}>
           <button className={styles.tropeButton}>Enemies to Lovers</button>
           <button className={styles.tropeButton}>Found Family</button>
