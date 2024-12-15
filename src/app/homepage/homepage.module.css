@@ -1,69 +1,208 @@
 /* src/app/homepage/homepage.module.css */
 
+/* Header Styles */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
   background-color: transparent;
+  position: relative;
 }
 
 .header img {
   max-height: 50px;
   object-fit: contain;
-}
-
-.header img:hover {
   cursor: pointer;
 }
 
-.profileIcon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+.logout {
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
-.main {
-  padding: 20px;
-  text-align: center;
+.logout:hover {
+  background-color: white;
+  color: #800020;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
 }
 
+.main-sec {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 25rem;
+    margin: auto;
+}
+  
+
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.description {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: #c0c0c0;
+}
+
+/* Search Section */
 .searchSection {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Memastikan section mengambil tinggi layar penuh */
+  margin: 20px 0;
 }
 
 .searchBar {
-  width: 50%; /* Sesuaikan lebar search bar */
-  padding: 15px;
-  font-size: 18px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 70%;
+  max-width: 600px;
+  padding: 14px 20px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  outline: none;
+  color: black;
 }
 
+.searchBar:focus {
+  border-color: #991616;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
 
-.popularTropes {
+.popularTitle {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
   justify-content: center;
+  margin-top: 60px;
+  margin-bottom: 10px;
+  font-size: 30px;
+  font-weight: bold;
 }
 
-.tropeButton {
-  background-color: #007bff;
+.tropeTitle {
+  font-size: larger;
+  font-weight: bold;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.carousel {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+  margin-bottom: 30px;
+  scrollbar-width: none;
+  overflow: scroll;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.dramaCard {
+  flex: 0 0 auto; 
+  height: 300px;
+  width: 200px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.dramaCard:hover {
+  transform: scale(1.05);
+}
+
+.dramaCard img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.dramaCard .title {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+}
+
+.tropeButtons {
+  display: flex; 
+  gap: 10px; 
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.tropeButtons button {
+  background-color: white;
+  color: #800020;
+  border: none;
+  width: 200px;
+  height: 80px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.tropeButtons button:hover {
+  background-color: #800020;
+  color: white;
+}
+
+
+/* Popup Overlay */
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.popup img {
+  max-width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.closeButton {
+  background-color: #dc3545;
   color: white;
   border: none;
+  padding: 10px 20px;
   border-radius: 5px;
-  padding: 10px 15px;
-  font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
 
-.tropeButton:hover {
-  background-color: #0056b3;
+.closeButton:hover {
+  background-color: #c82333;
 }

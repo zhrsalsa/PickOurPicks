@@ -7,13 +7,12 @@ export default function Home() {
     <div>
       {/* Header */}
       <header className={styles.header}>
-        {/* Ganti teks "Pick Our Picks" dengan gambar */}
         <Image
-          src="/headerimg.png" // Pastikan nama file dan path sesuai
+          src="/headerimg.png"
           alt="Pick Our Picks"
-          width={65} // Atur lebar sesuai kebutuhan
-          height={20} // Atur tinggi sesuai kebutuhan
-          priority // Memastikan gambar di-load lebih cepat
+          width={65}
+          height={20}
+          priority
         />
         <nav className={styles.nav}>
           <a href="/login">Login</a>
@@ -35,7 +34,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Content Section */}
       <main className="px-8 py-12">
         {/* Feature Section 1 */}
         <section id="found-family" className={`${styles.section} ${styles['section-right']}`}>
