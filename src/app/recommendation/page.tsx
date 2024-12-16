@@ -4,7 +4,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import styles from "./homepage.module.css";
+import styles from "./recommendation.module.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { FaHeart, FaRing, FaUserSecret, FaClock, FaUsers, FaHistory } from "react-icons/fa";
@@ -42,7 +42,7 @@ const tropes = [
   { name: "Love Triangle", icon: <FaClock /> },
 ];
 
-const Homepage = () => {
+const Recommendation = () => {
   const router = useRouter();
   const [selectedDrama, setSelectedDrama] = useState<Drama | null>(null);
 
@@ -88,13 +88,11 @@ const Homepage = () => {
       <main className="px-8 py-12">
         <div className={styles['main-sec']}>
           <h1 className={styles.title}>Explore dramas to watch based on trope in the story!</h1>
-          <p className={styles.description}> You can find different genres with the same trope</p>
           <input type="text" placeholder="Search your favorite trope..." className={styles.searchBar} />
         </div>
 
         <section>
-          <h2 className={styles.popularTitle}>Popular Tropes</h2>
-          <h3 className={styles.tropeTitle}>Enemies to Lovers</h3>
+          <h3 className={styles.tropeTitle}>Results</h3>
           <Carousel 
             responsive={responsive}
             className={styles.carousel}
@@ -114,18 +112,6 @@ const Homepage = () => {
               </div>
             ))}
           </Carousel>
-        </section>
-
-        <section className={styles.otherTropes}>
-          <h3 className={styles.tropeTitle}>Other Popular Tropes</h3>
-          <div className={styles.tropeButtons}>
-            <button>Friends to Lovers</button>
-            <button>Fake Marriage</button>
-            <button>Enemies to Lovers</button>
-            <button>Love Triangle</button>
-            <button>Secret Identity</button>
-            <button>Time Travel</button>
-          </div>
         </section>
 
         {selectedDrama && (
@@ -148,4 +134,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default Recommendation;

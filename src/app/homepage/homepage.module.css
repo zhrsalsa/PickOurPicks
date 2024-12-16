@@ -39,7 +39,6 @@
     height: 25rem;
     margin: auto;
 }
-  
 
 .title {
   font-size: 36px;
@@ -68,7 +67,7 @@
   padding: 14px 20px;
   font-size: 16px;
   border: 2px solid #ccc;
-  border-radius: 25px;
+  border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   outline: none;
   color: black;
@@ -138,29 +137,29 @@
 }
 
 .tropeButtons {
-  display: flex; 
-  gap: 10px; 
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px; /* Jarak antar tombol */
+  margin-top: 16px;
 }
 
 .tropeButtons button {
-  background-color: white;
-  color: #800020;
-  border: none;
-  width: 200px;
-  height: 80px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
   border-radius: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  padding: 12px 16px;
+  font-size: 14px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .tropeButtons button:hover {
-  background-color: #800020;
-  color: white;
+  background: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
 }
+
 
 
 /* Popup Overlay */
@@ -184,25 +183,60 @@
   max-width: 500px;
   width: 90%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  text-align: center;
+  text-align:left;
 }
 
-.popup img {
-  max-width: 100%;
-  border-radius: 5px;
-  margin-bottom: 10px;
+.popup h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 2px;
+  color: #800020;
+}
+
+.popup .year {
+  color: #777;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.popup .genre {
+  font-size: 14px;
+  font-weight: bold;
+  color: #991616;
+  margin-bottom: 20px;
+}
+
+.popup .description {
+  color: #333;
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.closeButtonWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; 
 }
 
 .closeButton {
-  background-color: #dc3545;
+  background-color: #800020;
   color: white;
-  border: none;
-  padding: 10px 20px;
+  font-weight: bold;
+  padding: 8px 16px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  font-size: small;
 }
 
 .closeButton:hover {
-  background-color: #c82333;
+  background-color: #991616;
+}
+
+
+.popup img {
+  height: 100px;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }

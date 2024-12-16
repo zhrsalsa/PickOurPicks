@@ -1,0 +1,210 @@
+/* src/app/homepage/homepage.module.css */
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: transparent;
+    position: relative;
+  }
+  
+  .header img {
+    max-height: 50px;
+    object-fit: contain;
+    cursor: pointer;
+  }
+  
+  .logout {
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .logout:hover {
+    background-color: white;
+    color: #800020;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+  }
+  
+  .main-sec {
+      display: flex;
+      flex-direction: column;
+      justify-content:first baseline;
+      align-items: center;
+      text-align: center;
+      height: 12rem;
+      margin: auto;
+  }
+    
+  .title {
+    font-size: 27px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Search Section */
+  .searchSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .searchBar {
+    width: 70%;
+    max-width: 600px;
+    padding: 14px 20px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    outline: none;
+    color: black;
+  }
+  
+  .searchBar:focus {
+    border-color: #991616;
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+  }
+  
+  .popularTitle {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 60px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  
+  .tropeTitle {
+    font-size: larger;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+  
+  .carousel {
+    display: flex;
+    gap: 10px;
+    padding: 10px 0;
+    margin-bottom: 30px;
+    scrollbar-width: none;
+    overflow: scroll;
+  }
+  
+  .carousel::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .dramaCard {
+    flex: 0 0 auto; 
+    height: 300px;
+    width: 200px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .dramaCard:hover {
+    transform: scale(1.05);
+  }
+  
+  .dramaCard img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .dramaCard .title {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Popup Overlay */
+  .popupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  .popup {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align:left;
+  }
+  
+  .popup h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 2px;
+    color: #800020;
+  }
+  
+  .popup .year {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+  
+  .popup .genre {
+    font-size: 14px;
+    font-weight: bold;
+    color: #991616;
+    margin-bottom: 20px;
+  }
+  
+  .popup .description {
+    color: #333;
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .closeButtonWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; 
+  }
+  
+  .closeButton {
+    background-color: #800020;
+    color: white;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: small;
+  }
+  
+  .closeButton:hover {
+    background-color: #991616;
+  }
+  
+  
+  .popup img {
+    height: 100px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
