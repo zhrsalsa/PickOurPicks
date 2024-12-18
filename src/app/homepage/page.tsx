@@ -9,6 +9,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { FaHeart, FaRing, FaUserSecret, FaClock, FaUsers, FaHistory } from "react-icons/fa";
 
+
 // Define a type for Drama
 type Drama = {
   id: number;

@@ -21,3 +21,15 @@ model User {
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
 }
+
+model Drama {
+  id         Int      @id @default(autoincrement())
+  title      String
+  episode    Int
+  genre      String
+  platform   String
+  poster     String
+  status     String
+  trope      String
+  year       Int
+}
