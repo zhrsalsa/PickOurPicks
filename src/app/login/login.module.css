@@ -75,16 +75,24 @@
   color: rgba(255, 255, 255, 0.7); /* Placeholder tetap terlihat */
 }
 
-.togglePassword {
+.passwordContainer {
+  position: relative;
+}
+
+.toggleButton {
   position: absolute;
-  top: 50%;
   right: 10px;
+  top: 50%;
   transform: translateY(-50%);
   background: none;
   border: none;
-  color: #ffffff;
+  color: #b4b4b4;
   cursor: pointer;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
+}
+
+.toggleButton:hover {
+  text-decoration: underline;
 }
 
 .button {

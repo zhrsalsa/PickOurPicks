@@ -1,4 +1,4 @@
-/* src/app/homepage/homepage.module.css */
+/* src/app/recommendation/recommendation.module.css */
 
 /* Header Styles */
 .header {
@@ -200,11 +200,3 @@
   .closeButton:hover {
     background-color: #991616;
   }
-  
-  
-  .popup img {
-    height: 100px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-  

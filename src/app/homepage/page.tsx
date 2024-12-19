@@ -1,3 +1,5 @@
+/* src/app/homepage/ */
+
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -23,6 +25,8 @@ const Homepage = () => {
   const router = useRouter();
   const [dramas, setDramas] = useState<Drama[]>([]);
   const [selectedDrama, setSelectedDrama] = useState<Drama | null>(null);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [filteredResults, setFilteredResults] = useState<Drama[]>([]);
 
   useEffect(() => {
     const fetchDramas = async () => {
@@ -58,6 +62,33 @@ const Homepage = () => {
     mobile: { breakpoint: { max: 464, min: 0 }, items: 1 },
   };
 
+  // Default filter untuk menampilkan 'Enemies to Lovers'
+  const defaultTropeFilter = dramas.filter((drama) =>
+    drama.trope?.toLowerCase().includes("enemies to lovers")
+  );
+
+  // Handle ketika pengguna menekan tombol Enter di input
+// Jangan langsung set hasil pencarian, tunggu sampai Enter ditekan
+  const [isSearching, setIsSearching] = useState(false);
+
+  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      const results = dramas.filter((drama) =>
+        drama.trope?.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredResults(results);
+      setIsSearching(true); // Indikasikan pencarian sudah dilakukan
+    }
+  };
+
+  const handleButtonSearch = (trope: string) => {
+    setSearchTerm(trope);
+    const results = dramas.filter((drama) =>
+      drama.trope?.toLowerCase().includes(trope.toLowerCase())
+    );
+    setFilteredResults(results);
+  };  
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -71,11 +102,20 @@ const Homepage = () => {
         <div className={styles["main-sec"]}>
           <h1 className={styles.title}>Explore dramas to watch based on trope in the story!</h1>
           <p className={styles.description}>You can find different genres with the same trope</p>
-          <input type="text" placeholder="Search your favorite trope..." className={styles.searchBar} />
+          <input
+            type="text"
+            placeholder="Search your favorite trope..."
+            className={styles.searchBar}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)} // Tetap update state saat ketik
+            onKeyDown={handleSearch} // Deteksi tombol Enter
+          />
         </div>
 
         <section>
-          <h2 className={styles.popularTitle}>Popular Tropes</h2>
+          <h2 className={styles.popularTitle}>
+            {isSearching ? "Search Results" : "Popular Tropes"}
+          </h2>
           <h3 className={styles.tropeTitle}>Enemies to Lovers</h3>
           <Carousel
             responsive={responsive}
@@ -86,16 +126,49 @@ const Homepage = () => {
             keyBoardControl
             partialVisbile
           >
-            {dramas.map((drama) => (
-              <div
-                key={drama.id}
-                className={styles.dramaCard}
-                onClick={() => handleDramaClick(drama)}
-              >
-                <img src={drama.poster} alt={drama.title} className={styles.dramaImage} />
-              </div>
-            ))}
+            {isSearching
+              ? filteredResults.map((drama) => (
+                  <div
+                    key={drama.id}
+                    className={styles.dramaCard}
+                    onClick={() => handleDramaClick(drama)}
+                  >
+                    <img src={drama.poster} alt={drama.title} className={styles.dramaImage} />
+                  </div>
+                ))
+              : // Jika input sudah dilakukan dan Enter ditekan
+                defaultTropeFilter.map((drama) => (
+                <div
+                    key={drama.id}
+                    className={styles.dramaCard}
+                    onClick={() => handleDramaClick(drama)}
+                  >
+                    <img src={drama.poster} alt={drama.title} className={styles.dramaImage} />
+                  </div>
+                ))}
           </Carousel>
+        </section>
+
+        <section className={styles.otherTropes}>
+          <h3 className={styles.tropeTitle}>Other Popular Tropes</h3>
+          <div className={styles.tropeButtons}>
+            {[
+              "Friends to Lovers",
+              "Fake Marriage",
+              "Enemies to Lovers",
+              "Love Triangle",
+              "Secret Identity",
+              "Time Travel",
+            ].map((trope) => (
+              <button
+                key={trope}
+                onClick={() => handleButtonSearch(trope)}
+                className={styles.tropeButton}
+              >
+                {trope}
+              </button>
+            ))}
+          </div>
         </section>
 
         {selectedDrama && (

@@ -1,6 +1,6 @@
-/* src/app/signup/page.tsx */
 "use client";
 
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./signup.module.css";
 import Link from "next/link";
@@ -8,6 +8,8 @@ import Image from "next/image";
 
 export default function Signup() {
   const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleSignup = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -104,25 +106,43 @@ export default function Signup() {
               <label className={styles.label} htmlFor="password">
                 Password
               </label>
-              <input
-                className={styles.input}
-                type="password"
-                id="password"
-                placeholder="Create a password"
-                required
-              />
+              <div className={styles.passwordContainer}>
+                <input
+                  className={styles.input}
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  placeholder="Create a password"
+                  required
+                />
+                <button
+                  type="button"
+                  className={styles.toggleButton}
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? "Hide" : "Show"}
+                </button>
+              </div>
             </div>
             <div className={styles.inputGroup}>
               <label className={styles.label} htmlFor="confirmPassword">
                 Confirm Password
               </label>
-              <input
-                className={styles.input}
-                type="password"
-                id="confirmPassword"
-                placeholder="Re-enter your password"
-                required
-              />
+              <div className={styles.passwordContainer}>
+                <input
+                  className={styles.input}
+                  type={showConfirmPassword ? "text" : "password"}
+                  id="confirmPassword"
+                  placeholder="Re-enter your password"
+                  required
+                />
+                <button
+                  type="button"
+                  className={styles.toggleButton}
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                >
+                  {showConfirmPassword ? "Hide" : "Show"}
+                </button>
+              </div>
             </div>
             <button type="submit" className={styles.button}>
               Sign Up
@@ -138,4 +158,4 @@ export default function Signup() {
       </footer>
     </div>
   );
-} 
+}

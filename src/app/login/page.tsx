@@ -1,7 +1,6 @@
-
-/* src/app/login/page.tsx */
 "use client";
 
+import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import styles from "./login.module.css";
@@ -10,6 +9,7 @@ import Image from "next/image";
 
 export default function Login() {
   const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -68,13 +68,22 @@ export default function Login() {
               <label className={styles.label} htmlFor="password">
                 Password
               </label>
-              <input
-                className={styles.input}
-                type="password"
-                id="password"
-                placeholder="Enter your password"
-                required
-              />
+              <div className={styles.passwordContainer}>
+                <input
+                  className={styles.input}
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  placeholder="Enter your password"
+                  required
+                />
+                <button
+                  type="button"
+                  className={styles.toggleButton}
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? "Hide" : "Show"}
+                </button>
+              </div>
             </div>
             <button type="submit" className={styles.button}>
               Login
@@ -90,4 +99,4 @@ export default function Login() {
       </footer>
     </div>
   );
-} 
+}
