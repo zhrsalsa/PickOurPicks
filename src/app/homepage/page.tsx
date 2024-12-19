@@ -1,5 +1,4 @@
-/* src/app/homepage/ */
-
+/* src/app/homepage/page.tsx */
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -25,17 +24,18 @@ const Homepage = () => {
   const router = useRouter();
   const [dramas, setDramas] = useState<Drama[]>([]);
   const [selectedDrama, setSelectedDrama] = useState<Drama | null>(null);
-  const [searchTerm, setSearchTerm] = useState<string>("");
-  const [filteredResults, setFilteredResults] = useState<Drama[]>([]);
 
   useEffect(() => {
     const fetchDramas = async () => {
       try {
         const response = await fetch("/api/dramas");
+        if (!response.ok) {
+          throw new Error("Failed to fetch dramas");
+        }
         const data = await response.json();
         setDramas(data);
       } catch (error) {
-        console.error("Failed to fetch dramas:", error);
+        console.error("Error fetching dramas:", error);
       }
     };
 
@@ -67,27 +67,10 @@ const Homepage = () => {
     drama.trope?.toLowerCase().includes("enemies to lovers")
   );
 
-  // Handle ketika pengguna menekan tombol Enter di input
-// Jangan langsung set hasil pencarian, tunggu sampai Enter ditekan
-  const [isSearching, setIsSearching] = useState(false);
-
-  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      const results = dramas.filter((drama) =>
-        drama.trope?.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      setFilteredResults(results);
-      setIsSearching(true); // Indikasikan pencarian sudah dilakukan
-    }
+  // Redirect to the recommendation page
+  const handleStartExplore = () => {
+    router.push("/recommendation");
   };
-
-  const handleButtonSearch = (trope: string) => {
-    setSearchTerm(trope);
-    const results = dramas.filter((drama) =>
-      drama.trope?.toLowerCase().includes(trope.toLowerCase())
-    );
-    setFilteredResults(results);
-  };  
 
   return (
     <div className={styles.container}>
@@ -100,22 +83,18 @@ const Homepage = () => {
 
       <main className="px-8 py-12">
         <div className={styles["main-sec"]}>
-          <h1 className={styles.title}>Explore dramas to watch based on trope in the story!</h1>
-          <p className={styles.description}>You can find different genres with the same trope</p>
-          <input
-            type="text"
-            placeholder="Search your favorite trope..."
-            className={styles.searchBar}
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)} // Tetap update state saat ketik
-            onKeyDown={handleSearch} // Deteksi tombol Enter
-          />
+          <h1 className={styles.title}>Welcome, name!</h1>
+          <p className={styles.description}>Explore dramas to watch based on trope in the story</p>
+          <button
+            className={styles.startExploreButton}
+            onClick={handleStartExplore}
+          >
+            Start Explore
+          </button>
         </div>
 
         <section>
-          <h2 className={styles.popularTitle}>
-            {isSearching ? "Search Results" : "Popular Tropes"}
-          </h2>
+          <h2 className={styles.popularTitle}>Popular Tropes</h2>
           <h3 className={styles.tropeTitle}>Enemies to Lovers</h3>
           <Carousel
             responsive={responsive}
@@ -126,61 +105,28 @@ const Homepage = () => {
             keyBoardControl
             partialVisbile
           >
-            {isSearching
-              ? filteredResults.map((drama) => (
-                  <div
-                    key={drama.id}
-                    className={styles.dramaCard}
-                    onClick={() => handleDramaClick(drama)}
-                  >
-                    <img src={drama.poster} alt={drama.title} className={styles.dramaImage} />
-                  </div>
-                ))
-              : // Jika input sudah dilakukan dan Enter ditekan
-                defaultTropeFilter.map((drama) => (
-                <div
-                    key={drama.id}
-                    className={styles.dramaCard}
-                    onClick={() => handleDramaClick(drama)}
-                  >
-                    <img src={drama.poster} alt={drama.title} className={styles.dramaImage} />
-                  </div>
-                ))}
-          </Carousel>
-        </section>
-
-        <section className={styles.otherTropes}>
-          <h3 className={styles.tropeTitle}>Other Popular Tropes</h3>
-          <div className={styles.tropeButtons}>
-            {[
-              "Friends to Lovers",
-              "Fake Marriage",
-              "Enemies to Lovers",
-              "Love Triangle",
-              "Secret Identity",
-              "Time Travel",
-            ].map((trope) => (
-              <button
-                key={trope}
-                onClick={() => handleButtonSearch(trope)}
-                className={styles.tropeButton}
+            {defaultTropeFilter.map((drama) => (
+              <div
+                key={drama.id}
+                className={styles.dramaCard}
+                onClick={() => handleDramaClick(drama)}
               >
-                {trope}
-              </button>
+                <img src={drama.poster} alt={drama.title} className={styles.dramaImage} />
+              </div>
             ))}
-          </div>
+          </Carousel>
         </section>
 
         {selectedDrama && (
           <div className={styles.popupOverlay} onClick={closePopup}>
             <div className={styles.popup} onClick={(e) => e.stopPropagation()}>
               <h2>{selectedDrama.title}</h2>
-              <div className={styles.year}>Year: {selectedDrama.year}</div>
-              <div className={styles.genre}>Genre: {selectedDrama.genre}</div>
-              <div className={styles.platform}>Platform: {selectedDrama.platform}</div>
-              <div className={styles.status}>Status: {selectedDrama.status}</div>
-              <div className={styles.trope}>Trope: {selectedDrama.trope}</div>
-              <p className={styles.description}>Episodes: {selectedDrama.episode}</p>
+              <div className={styles.year}>{selectedDrama.year}</div>
+              <div className={styles.genre}>{selectedDrama.genre}</div>
+              <div className={styles.platform}>{selectedDrama.platform}</div>
+              <div className={styles.status}>{selectedDrama.status}</div>
+              <div className={styles.trope}>{selectedDrama.trope}</div>
+              <p className={styles.description}>{selectedDrama.episode}</p>
               <div className={styles.closeButtonWrapper}>
                 <button className={styles.closeButton} onClick={closePopup}>
                   CLOSE

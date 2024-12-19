@@ -234,46 +234,22 @@
   background-color: #991616;
 }
 
-
-/* Filter Section */
-.filterSection {
-  margin-top: 30px;
-  padding: 20px;
-  background-color: #f8f8f8;
-  border-radius: 10px;
-}
-
-.filterTitle {
-  font-size: 24px;
+.startExploreButton {
+  background-color: white;
+  color: #800020;
+  border: 2px solid #800020;
+  padding: 14px 32px;
+  font-size: 18px;
   font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.filters {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.filterSelect {
-  padding: 10px;
-  font-size: 16px;
-  border: 2px solid #ccc;
   border-radius: 5px;
-  background-color: #fff;
-  width: 150px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
 }
 
-.filterButton {
-  padding: 10px 20px;
+.startExploreButton:hover {
   background-color: #800020;
   color: white;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
+  border-color: white;
 }
 
-.filterButton:hover {
-  background-color: #991616;
-}
