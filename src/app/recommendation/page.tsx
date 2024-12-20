@@ -46,9 +46,8 @@ const Recommendation = () => {
       const results = dramas.filter((drama) =>
         drama.trope?.toLowerCase().includes(searchTerm.toLowerCase())
       );
-      setFilteredResults(results); // Set the filtered results
+      setFilteredResults(results);
 
-      // Extract matching tropes based on search term
       const matched = [
         ...new Set(
           results
@@ -73,16 +72,52 @@ const Recommendation = () => {
     router.push("/");
   };
 
+  const handleRecommendationClick = () => {
+    router.push("/recommendation");
+  };
+
+  const handleWatchlistClick = () => {
+    router.push("/watchlist");
+  };
+
+  const handleButtonSearch = (trope: string) => {
+    setSearchTerm(trope);
+    const results = dramas.filter((drama) =>
+      drama.trope.toLowerCase().includes(trope.toLowerCase())
+    );
+    setFilteredResults(results);
+
+    const matched = [
+      ...new Set(
+        results
+          .flatMap((drama) => drama.trope.split(","))
+          .filter((t) => t.toLowerCase().includes(trope.toLowerCase()))
+      ),
+    ];
+    setMatchedTropes(matched);
+  };
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
+      <button onClick={() => router.push("/")} className={styles.headerImageButton}>
         <Image src="/headerimg.png" alt="Pick Our Picks" width={65} height={20} priority />
-        <button className={styles.logout} onClick={handleLogout}>
-          Logout
-        </button>
+      </button>
+          <div className={styles.headerButtons}>
+          <button className={styles.recommendationButton} onClick={handleRecommendationClick}>
+            Recommendation
+          </button>
+          <button className={styles.watchlistButton} onClick={handleWatchlistClick}>
+            Watchlist
+          </button>
+          <button className={styles.logout} onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
       </header>
 
       <main className="px-8 py-12">
+        {/* Search and Results */}
         <div className={styles["main-sec"]}>
           <h1 className={styles.title}>Let us know what's your favorite trope</h1>
           <input
@@ -95,18 +130,43 @@ const Recommendation = () => {
           />
         </div>
 
-        <section>
-        {searchTerm.trim() !== "" && matchedTropes.length > 0 && (
-          <div className={styles.matchedTropes}>
-            <h3 className={styles.tropeTitle}>Matched Tropes:</h3>
-            <ul>
-              {matchedTropes.map((trope, index) => (
-                <li key={index}>{trope}</li>
-              ))}
-            </ul>
+        {/* Popular Tropes Section */}
+        <section className={styles.otherTropes}>
+          <h3 className={styles.tropeTitle}>Popular Tropes</h3>
+          <div className={styles.tropeButtons}>
+            {[
+              "Friends to Lovers",
+              "Fake Marriage",
+              "Enemies to Lovers",
+              "Love Triangle",
+              "Secret Identity",
+              "Time Travel",
+            ].map((trope) => (
+              <button
+                key={trope}
+                onClick={() => handleButtonSearch(trope)}
+                className={styles.tropeButton}
+              >
+                {trope}
+              </button>
+            ))}
           </div>
-        )}
-        <h3 className={styles.tropeTitle}>Results</h3>
+        </section>
+
+        <section>
+          {searchTerm.trim() !== "" && matchedTropes.length > 0 && (
+            <div className={styles.matchedTropes}>
+              <h3 className={styles.tropeTitle}>Matched Tropes:</h3>
+              <ul>
+                {matchedTropes.map((trope, index) => (
+                  <li key={index}>{trope}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+          <h3 className={styles.tropeTitle}>
+            {searchTerm.trim() === "" ? "Dramas" : `Results for "${searchTerm}"`}
+          </h3>
           <Carousel
             responsive={{
               superLargeDesktop: { breakpoint: { max: 4000, min: 3000 }, items: 7 },
@@ -121,7 +181,7 @@ const Recommendation = () => {
             keyBoardControl
             partialVisbile
           >
-            {searchTerm.trim() === "" 
+            {searchTerm.trim() === ""
               ? dramas.map((drama) => (
                   <div
                     key={drama.id}
@@ -131,7 +191,7 @@ const Recommendation = () => {
                     <img src={drama.poster} alt={drama.title} className={styles.dramaImage} />
                   </div>
                 ))
-              : filteredResults.length > 0 
+              : filteredResults.length > 0
               ? filteredResults.map((drama) => (
                   <div
                     key={drama.id}
@@ -141,8 +201,7 @@ const Recommendation = () => {
                     <img src={drama.poster} alt={drama.title} className={styles.dramaImage} />
                   </div>
                 ))
-              : <p className={styles.noResults}>No dramas found for this trope.</p>
-            }
+              : <p className={styles.noResults}>No dramas found for this trope.</p>}
           </Carousel>
         </section>
 
@@ -153,7 +212,6 @@ const Recommendation = () => {
               <div className={styles.year}>{selectedDrama.year}</div>
               <div className={styles.genre}>{selectedDrama.genre}</div>
               <div className={styles.platform}>{selectedDrama.platform}</div>
-              <div className={styles.status}>{selectedDrama.status}</div>
               <div className={styles.trope}>{selectedDrama.trope}</div>
               <p className={styles.description}>{selectedDrama.episode}</p>
               <div className={styles.closeButtonWrapper}>
