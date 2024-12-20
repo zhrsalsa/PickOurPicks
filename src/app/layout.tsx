@@ -1,7 +1,9 @@
 // src/app/layout.tsx
 import './globals.css';
+import { Metadata } from 'next';
+import ClientWrapper from './ClientWrapper';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Pick Our Picks',
   description: 'Rekomendasi drama Korea berdasarkan trope',
 };
@@ -9,7 +11,9 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ClientWrapper>{children}</ClientWrapper>
+      </body>
     </html>
   );
 }

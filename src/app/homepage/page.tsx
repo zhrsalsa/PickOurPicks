@@ -1,4 +1,5 @@
-/* src/app/homepage/page.tsx */
+// src/app/homepage/page.tsx
+
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -7,6 +8,7 @@ import Image from "next/image";
 import styles from "./homepage.module.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { useSession } from "next-auth/react";
 
 type Drama = {
   id: number;
@@ -24,6 +26,7 @@ const Homepage = () => {
   const router = useRouter();
   const [dramas, setDramas] = useState<Drama[]>([]);
   const [selectedDrama, setSelectedDrama] = useState<Drama | null>(null);
+  const { data: session } = useSession(); // Now works because SessionProvider wraps this component
 
   useEffect(() => {
     const fetchDramas = async () => {
@@ -55,6 +58,14 @@ const Homepage = () => {
     router.push("/");
   };
 
+  const handleRecommendationClick = () => {
+    router.push("/recommendation");
+  };
+
+  const handleWatchlistClick = () => {
+    router.push("/watchlist");
+  };
+
   const responsive = {
     superLargeDesktop: { breakpoint: { max: 4000, min: 3000 }, items: 7 },
     desktop: { breakpoint: { max: 3000, min: 1024 }, items: 7 },
@@ -62,12 +73,10 @@ const Homepage = () => {
     mobile: { breakpoint: { max: 464, min: 0 }, items: 1 },
   };
 
-  // Default filter untuk menampilkan 'Enemies to Lovers'
   const defaultTropeFilter = dramas.filter((drama) =>
     drama.trope?.toLowerCase().includes("enemies to lovers")
   );
 
-  // Redirect to the recommendation page
   const handleStartExplore = () => {
     router.push("/recommendation");
   };
@@ -76,14 +85,24 @@ const Homepage = () => {
     <div className={styles.container}>
       <header className={styles.header}>
         <Image src="/headerimg.png" alt="Pick Our Picks" width={65} height={20} priority />
-        <button className={styles.logout} onClick={handleLogout}>
-          Logout
-        </button>
+        <div className={styles.headerButtons}>
+          <button className={styles.recommendationButton} onClick={handleRecommendationClick}>
+            Recommendation
+          </button>
+          <button className={styles.watchlistButton} onClick={handleWatchlistClick}>
+            Watchlist
+          </button>
+          <button className={styles.logout} onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
       </header>
 
       <main className="px-8 py-12">
         <div className={styles["main-sec"]}>
-          <h1 className={styles.title}>Welcome, name!</h1>
+          <h1 className={styles.title}>            
+            Welcome, {session?.user?.name ? session.user.name : "User"}!
+          </h1>
           <p className={styles.description}>Explore dramas to watch based on trope in the story</p>
           <button
             className={styles.startExploreButton}

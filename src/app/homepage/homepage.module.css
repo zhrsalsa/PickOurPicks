@@ -16,6 +16,25 @@
   cursor: pointer;
 }
 
+.headerButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.recommendationButton,
+.watchlistButton {
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.recommendationButton:hover,
+.watchlistButton:hover {
+  background-color: white;
+  color: #800020;
+}
+
 .logout {
   padding: 0.5rem 1rem;
   border-radius: 0.3rem;
@@ -26,8 +45,6 @@
 .logout:hover {
   background-color: white;
   color: #800020;
-  padding: 0.5rem 1rem;
-  border-radius: 0.3rem;
 }
 
 .main-sec {
