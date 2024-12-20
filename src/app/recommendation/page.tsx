@@ -83,10 +83,10 @@ const Recommendation = () => {
   const handleButtonSearch = (trope: string) => {
     setSearchTerm(trope);
     const results = dramas.filter((drama) =>
-      drama.trope.toLowerCase().includes(trope.toLowerCase())
+      drama.trope && drama.trope.toLowerCase().includes(trope.toLowerCase()) // Check if trope exists before calling toLowerCase
     );
     setFilteredResults(results);
-
+  
     const matched = [
       ...new Set(
         results
@@ -95,12 +95,12 @@ const Recommendation = () => {
       ),
     ];
     setMatchedTropes(matched);
-  };
+  };  
 
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-      <button onClick={() => router.push("/")} className={styles.headerImageButton}>
+      <button onClick={() => router.push("/homepage")} className={styles.headerImageButton}>
         <Image src="/headerimg.png" alt="Pick Our Picks" width={65} height={20} priority />
       </button>
           <div className={styles.headerButtons}>
@@ -136,7 +136,7 @@ const Recommendation = () => {
           <div className={styles.tropeButtons}>
             {[
               "Friends to Lovers",
-              "Fake Marriage",
+              "Forced Proximity",
               "Enemies to Lovers",
               "Love Triangle",
               "Secret Identity",

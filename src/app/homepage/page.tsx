@@ -26,7 +26,7 @@ const Homepage = () => {
   const router = useRouter();
   const [dramas, setDramas] = useState<Drama[]>([]);
   const [selectedDrama, setSelectedDrama] = useState<Drama | null>(null);
-  const { data: session } = useSession(); // Now works because SessionProvider wraps this component
+  const { data: session } = useSession();
 
   useEffect(() => {
     const fetchDramas = async () => {
@@ -77,6 +77,10 @@ const Homepage = () => {
     drama.trope?.toLowerCase().includes("enemies to lovers")
   );
 
+  const friendsToLoversFilter = dramas.filter((drama) =>
+    drama.trope?.toLowerCase().includes("friends to lovers")
+  );
+
   const handleStartExplore = () => {
     router.push("/recommendation");
   };
@@ -100,18 +104,16 @@ const Homepage = () => {
 
       <main className="px-8 py-12">
         <div className={styles["main-sec"]}>
-          <h1 className={styles.title}>            
+          <h1 className={styles.title}>
             Welcome, {session?.user?.name || "User"}!
           </h1>
           <p className={styles.description}>Explore dramas to watch based on trope in the story</p>
-          <button
-            className={styles.startExploreButton}
-            onClick={handleStartExplore}
-          >
+          <button className={styles.startExploreButton} onClick={handleStartExplore}>
             Start Explore
           </button>
         </div>
 
+        {/* Enemies to Lovers Section */}
         <section>
           <h2 className={styles.popularTitle}>Popular Tropes</h2>
           <h3 className={styles.tropeTitle}>Enemies to Lovers</h3>
@@ -136,19 +138,45 @@ const Homepage = () => {
           </Carousel>
         </section>
 
+        {/* Friends to Lovers Section */}
+        <section>
+          <h3 className={styles.tropeTitle}>Friends to Lovers</h3>
+          <Carousel
+            responsive={responsive}
+            className={styles.carousel}
+            swipeable
+            draggable
+            ssr
+            keyBoardControl
+            partialVisbile
+          >
+            {friendsToLoversFilter.map((drama) => (
+              <div
+                key={drama.id}
+                className={styles.dramaCard}
+                onClick={() => handleDramaClick(drama)}
+              >
+                <img src={drama.poster} alt={drama.title} className={styles.dramaImage} />
+              </div>
+            ))}
+          </Carousel>
+        </section>
+
         {selectedDrama && (
           <div className={styles.popupOverlay} onClick={closePopup}>
             <div className={styles.popup} onClick={(e) => e.stopPropagation()}>
+              <button className={styles.closeIconButton} onClick={closePopup}>
+                ✕
+              </button>
               <h2>{selectedDrama.title}</h2>
               <div className={styles.year}>{selectedDrama.year}</div>
               <div className={styles.genre}>{selectedDrama.genre}</div>
               <div className={styles.platform}>{selectedDrama.platform}</div>
-              <div className={styles.status}>{selectedDrama.status}</div>
               <div className={styles.trope}>{selectedDrama.trope}</div>
-              <p className={styles.description}>{selectedDrama.episode}</p>
-              <div className={styles.closeButtonWrapper}>
-                <button className={styles.closeButton} onClick={closePopup}>
-                  CLOSE
+              <p className={styles.episode}>{selectedDrama.episode}</p>
+              <div className={styles.watchlistButtonWrapper}>
+                <button className={styles.addToWatchlistButton} onClick={() => console.log(`Added ${selectedDrama.title} to watchlist`)}>
+                  Add to Watchlist
                 </button>
               </div>
             </div>
