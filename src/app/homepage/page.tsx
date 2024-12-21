@@ -4,7 +4,6 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import styles from "./homepage.module.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -84,7 +83,9 @@ const Homepage = () => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <Image src="/headerimg.png" alt="Pick Our Picks" width={65} height={20} priority />
+      <button onClick={() => router.push("/homepage")} className={styles.headerImageButton}>
+          <img src="/headerimg.png" alt="Pick Our Picks" width={65} height={20} />
+      </button>
         <div className={styles.headerButtons}>
           <button className={styles.recommendationButton} onClick={handleRecommendationClick}>
             Recommendation

@@ -98,7 +98,7 @@ const Recommendation = () => {
       <button onClick={() => router.push("/homepage")} className={styles.headerImageButton}>
           <img src="/headerimg.png" alt="Pick Our Picks" width={65} height={20} />
       </button>
-          <div className={styles.headerButtons}>
+        <div className={styles.headerButtons}>
           <button className={styles.recommendationButton} onClick={handleRecommendationClick}>
             Recommendation
           </button>
@@ -110,7 +110,7 @@ const Recommendation = () => {
 
       <main className="px-8 py-12">
         <div className={styles["main-sec"]}>
-          <h1 className={styles.title}>Let us know what's your favorite trope</h1>
+          <h1 className={styles.title}>Let us know what&apos;s your favorite trope</h1>
           <input
             type="text"
             placeholder="Search your favorite trope..."

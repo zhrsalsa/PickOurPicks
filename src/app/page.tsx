@@ -90,7 +90,7 @@ export default function Home() {
             <div className={styles["fitur-card"]}>
               <h4>Watchlist</h4>
               <p>
-              Add your favorite Korean dramas to your watchlist so you won’t forget to watch them.
+              Add your favorite Korean dramas to your watchlist so you will not forget to watch them.
               </p>
             </div>
             <div className={styles["fitur-card"]}>
