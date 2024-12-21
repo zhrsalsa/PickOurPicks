@@ -62,10 +62,6 @@ const Homepage = () => {
     router.push("/recommendation");
   };
 
-  const handleWatchlistClick = () => {
-    router.push("/watchlist");
-  };
-
   const responsive = {
     superLargeDesktop: { breakpoint: { max: 4000, min: 3000 }, items: 7 },
     desktop: { breakpoint: { max: 3000, min: 1024 }, items: 7 },
@@ -92,9 +88,6 @@ const Homepage = () => {
         <div className={styles.headerButtons}>
           <button className={styles.recommendationButton} onClick={handleRecommendationClick}>
             Recommendation
-          </button>
-          <button className={styles.watchlistButton} onClick={handleWatchlistClick}>
-            Watchlist
           </button>
           <button className={styles.logout} onClick={handleLogout}>
             Logout
@@ -165,9 +158,6 @@ const Homepage = () => {
         {selectedDrama && (
           <div className={styles.popupOverlay} onClick={closePopup}>
             <div className={styles.popup} onClick={(e) => e.stopPropagation()}>
-              <button className={styles.closeIconButton} onClick={closePopup}>
-                ✕
-              </button>
               <h2>{selectedDrama.title}</h2>
               <div className={styles.year}>{selectedDrama.year}</div>
               <div className={styles.genre}>{selectedDrama.genre}</div>
@@ -176,7 +166,7 @@ const Homepage = () => {
               <p className={styles.episode}>{selectedDrama.episode}</p>
               <div className={styles.watchlistButtonWrapper}>
                 <button className={styles.addToWatchlistButton} onClick={() => console.log(`Added ${selectedDrama.title} to watchlist`)}>
-                  Add to Watchlist
+                  CLOSE
                 </button>
               </div>
             </div>

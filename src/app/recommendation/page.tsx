@@ -76,10 +76,6 @@ const Recommendation = () => {
     router.push("/recommendation");
   };
 
-  const handleWatchlistClick = () => {
-    router.push("/watchlist");
-  };
-
   const handleButtonSearch = (trope: string) => {
     setSearchTerm(trope);
     const results = dramas.filter((drama) =>
@@ -106,9 +102,6 @@ const Recommendation = () => {
           <div className={styles.headerButtons}>
           <button className={styles.recommendationButton} onClick={handleRecommendationClick}>
             Recommendation
-          </button>
-          <button className={styles.watchlistButton} onClick={handleWatchlistClick}>
-            Watchlist
           </button>
           <button className={styles.logout} onClick={handleLogout}>
             Logout
