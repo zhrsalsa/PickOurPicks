@@ -1,6 +1,5 @@
 /* src/app/homepage/homepage.module.css */
 
-/* Header Styles */
 .header {
   display: flex;
   justify-content: space-between;
@@ -128,33 +127,6 @@
   color: #333;
 }
 
-.tropeButtons {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px; /* Jarak antar tombol */
-  margin-top: 16px;
-}
-
-.tropeButtons button {
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #fff;
-  border-radius: 10px;
-  padding: 12px 16px;
-  font-size: 14px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.tropeButtons button:hover {
-  background: rgba(255, 255, 255, 0.4);
-  transform: translateY(-2px);
-}
-
-
-
-/* Popup Overlay */
 .popupOverlay {
   position: fixed;
   top: 0;

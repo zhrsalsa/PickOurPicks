@@ -87,8 +87,7 @@
     color: white;
   }
   
-  /* Content Section */
-  /* Feature Section Specific Styling */
+
 .section {
     display: flex;
     align-items: center;
@@ -108,7 +107,7 @@
     font-weight: bold;
     margin-bottom: 2rem;
     color: white;
-    width: 50%; /* Menentukan lebar untuk judul */
+    width: 50%; 
 }
 
 .section-desc p {
@@ -126,7 +125,7 @@
     font-weight: bold;
     margin-bottom: 2rem;
     color: white;
-    width: 50%; /* Menentukan lebar untuk judul */
+    width: 50%; 
 }
 
 .section2-desc p {
@@ -135,26 +134,26 @@
 
 .trope-description {
     font-size: 1rem;
-    color: #555; /* Warna teks abu-abu lembut */
-    margin: 0.5rem 0 1.5rem; /* Jarak atas dan bawah */
-    text-align: left; /* Posisi teks rata kiri */
-    font-family: 'Inter', sans-serif; /* Konsistensi font */
+    color: #555;
+    margin: 0.5rem 0 1.5rem;
+    text-align: left; 
+    font-family: 'Inter', sans-serif;
   }   
 
 
 .feature-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Mengurangi lebar minimum kartu */
-    gap: 1.5rem; /* Mengurangi jarak antar kartu */
-    width: 65%; /* Menentukan lebar untuk kartu */
+    gap: 1.5rem;
+    width: 65%;
 }
 
 .feature-card {
-  width: 200px; /* Sesuaikan dengan ukuran yang Anda inginkan */
-  height: 300px; /* Sesuaikan dengan ukuran yang Anda inginkan */
-  background-size: cover; /* Gambar akan menutupi seluruh area kartu tanpa distorsi */
-  background-position: center; /* Fokus ke tengah gambar */
-  background-repeat: no-repeat; /* Mencegah pengulangan gambar */
+  width: 200px;
+  height: 300px; 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -162,11 +161,11 @@
   color: white;
   border-radius: 8px;
   box-shadow: 
-  0 4px 8px rgba(0, 0, 0, 0.2), /* Shadow luar */
-  inset 0 -85px 20px rgba(0, 0, 0, 0.3), /* Shadow bawah */
-  inset 0 2px 4px rgba(0, 0, 0, 0.3), /* Shadow atas */
-  inset 2px 0 4px rgba(0, 0, 0, 0.3), /* Shadow kanan */
-  inset -2px 0 4px rgba(0, 0, 0, 0.3); /* Shadow kiri */  
+  0 4px 8px rgba(0, 0, 0, 0.2), 
+  inset 0 -85px 20px rgba(0, 0, 0, 0.3), 
+  inset 0 2px 4px rgba(0, 0, 0, 0.3), 
+  inset 2px 0 4px rgba(0, 0, 0, 0.3), 
+  inset -2px 0 4px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
 }
 
@@ -176,15 +175,15 @@
 }
 
 .feature-card h4 {
-    font-size: 1.rem; /* Mengurangi ukuran font judul */
+    font-size: 1.rem;
     font-weight: bold;
     margin-bottom: 0.1rem;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8); /* Tambahkan shadow */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .feature-card p {
-    font-size: 0.7rem; /* Mengurangi ukuran font deskripsi */
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8); /* Tambahkan shadow */
+    font-size: 0.7rem; 
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 
@@ -193,7 +192,6 @@
   opacity: 0;
 }
 
-/* Feature Section */
 .fitur-section {
     padding: 3rem 1rem;
     text-align: center;
@@ -250,12 +248,10 @@
   }  
 
   
-  /* Utility Class */
   .center-text {
     text-align: center;
   }  
   
-  /* Footer */
   .footer {
     background-color: #1a202c;
     padding: 1rem;
