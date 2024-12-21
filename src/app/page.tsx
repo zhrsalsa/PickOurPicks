@@ -14,8 +14,10 @@ export default function Home() {
           priority
         />
         <nav className={styles.nav}>
-          <a href="/login">Login</a>
-          <a href="/signup" style={{ fontWeight: 'bold' }}>Sign Up</a>
+          <Link href="/login">Login</Link>
+          <Link href="/signup">
+            <span style={{ fontWeight: 'bold' }}>Sign Up</span>
+          </Link>
         </nav>
       </header>
 
@@ -85,24 +87,26 @@ export default function Home() {
 
         <section id="fitur" className={styles["fitur-section"]}>
           <h2 className={styles["fitur-title"]}>Discover your favorite!</h2>
-          <p className={styles["fitur-title-desc"]}>Let us know what is your favorite trope and we'll find kdrama that suits your taste the best.</p>
+          <p className={styles["fitur-title-desc"]}>
+            Let us know what is your favorite trope and we'll find kdrama that suits your taste the best.
+          </p>
           <div className={styles["fitur-container"]}>
             <div className={styles["fitur-card"]}>
               <h4>Watchlist</h4>
               <p>
-              Add your favorite Korean dramas to your watchlist so you will not forget to watch them.
+                Add your favorite Korean dramas to your watchlist so you will not forget to watch them.
               </p>
             </div>
             <div className={styles["fitur-card"]}>
               <h4>Genre</h4>
               <p>
-              Explore Korean dramas based on your favorite genres such as romance, action, or mystery.
+                Explore Korean dramas based on your favorite genres such as romance, action, or mystery.
               </p>
             </div>
             <div className={styles["fitur-card"]}>
               <h4>Trope</h4>
               <p>
-              Discover dramas based on exciting tropes like Enemies to Lovers or Found Family.
+                Discover dramas based on exciting tropes like Enemies to Lovers or Found Family.
               </p>
             </div>
           </div>

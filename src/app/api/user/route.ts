@@ -17,7 +17,11 @@ const userSchema = z
 export async function POST(req: Request) {
     try {
         const body = await req.json();
-        const { email, name, password } = userSchema.parse(body);
+        const { email, name, password, confirmPassword } = userSchema.parse(body);
+
+        if (password !== confirmPassword) {
+            return NextResponse.json({ message: "Passwords do not match" }, { status: 400 });
+        }
 
         const existingUserByEmail = await db.user.findUnique({
             where: { email: email}
@@ -40,10 +44,11 @@ export async function POST(req: Request) {
                 password: hashedPassword
             }
         });
-        const { password: _, ...rest } = newUser;
+        const { password: newUserPassword, ...rest } = newUser;
 
         return NextResponse.json({ user: rest, message: "User created successfully"}, { status: 201});
     }   catch(error) {
+        console.error(error);
         return NextResponse.json({ message: "Something went wrong!"}, { status: 500});
     }
 }
