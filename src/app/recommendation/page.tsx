@@ -23,7 +23,7 @@ const Recommendation = () => {
   const [dramas, setDramas] = useState<Drama[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [filteredResults, setFilteredResults] = useState<Drama[]>([]);
-  const [matchedTropes, setMatchedTropes] = useState<string[]>([]); // State for matched tropes
+  const [matchedTropes, setMatchedTropes] = useState<string[]>([]);
   const [selectedDrama, setSelectedDrama] = useState<Drama | null>(null);
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const Recommendation = () => {
             .filter((trope) => trope.toLowerCase().includes(searchTerm.toLowerCase()))
         ),
       ];
-      setMatchedTropes(matched); // Update matched tropes state
+      setMatchedTropes(matched); 
     }
   };
 
@@ -78,7 +78,7 @@ const Recommendation = () => {
   const handleButtonSearch = (trope: string) => {
     setSearchTerm(trope);
     const results = dramas.filter((drama) =>
-      drama.trope && drama.trope.toLowerCase().includes(trope.toLowerCase()) // Check if trope exists before calling toLowerCase
+      drama.trope && drama.trope.toLowerCase().includes(trope.toLowerCase()) 
     );
     setFilteredResults(results);
   
@@ -110,7 +110,7 @@ const Recommendation = () => {
 
       <main className="px-8 py-12">
         <div className={styles["main-sec"]}>
-          <h1 className={styles.title}>Let us know what&apos;s your favorite trope</h1>
+          <h1 className={styles.title}>Let us know what is your favorite trope</h1>
           <input
             type="text"
             placeholder="Search your favorite trope..."

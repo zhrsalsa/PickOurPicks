@@ -23,7 +23,7 @@ export default function Home() {
 
       <section
         className={styles.hero}
-        style={{ backgroundImage: `url('/samdalri.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+        style={{ backgroundImage: "url('/samdalri.jpg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
       >
         <div className={styles.heroOverlay}>
           <h2 style={{ fontFamily: 'Poppins, sans-serif' }}>What kind of trope are you looking for?</h2>
