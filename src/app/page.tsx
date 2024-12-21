@@ -85,7 +85,7 @@ export default function Home() {
 
         <section id="fitur" className={styles["fitur-section"]}>
           <h2 className={styles["fitur-title"]}>Discover your favorite!</h2>
-          <p className={styles["fitur-title-desc"]}>Let us know what's your favorite trope and we'll find kdrama that suits your taste the best.</p>
+          <p className={styles["fitur-title-desc"]}>Let us know what is your favorite trope and we'll find kdrama that suits your taste the best.</p>
           <div className={styles["fitur-container"]}>
             <div className={styles["fitur-card"]}>
               <h4>Watchlist</h4>

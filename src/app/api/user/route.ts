@@ -1,7 +1,6 @@
 import { db } from "@/lib/db"
 import { hash } from "bcrypt";
 import { NextResponse } from "next/server";
-import { use } from "react";
 import * as z from 'zod';
 
 const userSchema = z
@@ -41,7 +40,7 @@ export async function POST(req: Request) {
                 password: hashedPassword
             }
         });
-        const { password: newUserPassword, ...rest } = newUser;
+        const { password: _, ...rest } = newUser;
 
         return NextResponse.json({ user: rest, message: "User created successfully"}, { status: 201});
     }   catch(error) {
