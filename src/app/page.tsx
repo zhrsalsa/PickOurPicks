@@ -5,7 +5,6 @@ import Image from 'next/image';
 export default function Home() {
   return (
     <div>
-      {/* Header */}
       <header className={styles.header}>
         <Image
           src="/headerimg.png"
@@ -20,7 +19,6 @@ export default function Home() {
         </nav>
       </header>
 
-      {/* Hero Section */}
       <section
         className={styles.hero}
         style={{ backgroundImage: `url('/samdalri.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}
@@ -35,14 +33,12 @@ export default function Home() {
       </section>
 
       <main className="px-8 py-12">
-        {/* Feature Section 1 */}
         <section id="found-family" className={`${styles.section} ${styles['section-right']}`}>
           <div className={styles['section-desc']}>
             <h3>Found Family</h3>
             <p>A family through bonds, not blood.</p>
           </div>
           <div className={styles['feature-container']}>
-            {/* Cards */}
             <div className={styles['feature-card']} style={{ backgroundImage: "url('/fbc.jpg')" }}>
               <h4>Family by Choice</h4>
               <p>Romance</p>
@@ -62,10 +58,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Feature Section 2 */}
         <section id="romance" className={`${styles.section} ${styles['section-left']}`}>
           <div className={styles['feature-container']}>
-            {/* Cards */}
             <div className={styles['feature-card']} style={{ backgroundImage: "url('/crashlanding.jpg')" }}>
               <h4>Crash Landing on You</h4>
               <p>Enemies to Lovers</p>
@@ -115,7 +109,6 @@ export default function Home() {
         </section>
       </main>
 
-      {/* Footer */}
       <footer className={styles.footer}>
         <p>© 2024 Pick Our Picks. All Rights Reserved.</p>
       </footer>

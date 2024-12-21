@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import styles from "./recommendation.module.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -97,7 +96,7 @@ const Recommendation = () => {
     <div className={styles.container}>
       <header className={styles.header}>
       <button onClick={() => router.push("/homepage")} className={styles.headerImageButton}>
-        <Image src="/headerimg.png" alt="Pick Our Picks" width={65} height={20} priority />
+          <img src="/headerimg.png" alt="Pick Our Picks" width={65} height={20} />
       </button>
           <div className={styles.headerButtons}>
           <button className={styles.recommendationButton} onClick={handleRecommendationClick}>
@@ -110,7 +109,6 @@ const Recommendation = () => {
       </header>
 
       <main className="px-8 py-12">
-        {/* Search and Results */}
         <div className={styles["main-sec"]}>
           <h1 className={styles.title}>Let us know what's your favorite trope</h1>
           <input
@@ -123,7 +121,6 @@ const Recommendation = () => {
           />
         </div>
 
-        {/* Popular Tropes Section */}
         <section className={styles.otherTropes}>
           <h3 className={styles.tropeTitle}>Popular Tropes</h3>
           <div className={styles.tropeButtons}>

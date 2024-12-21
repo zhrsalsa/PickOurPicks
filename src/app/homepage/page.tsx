@@ -106,7 +106,6 @@ const Homepage = () => {
           </button>
         </div>
 
-        {/* Enemies to Lovers Section */}
         <section>
           <h2 className={styles.popularTitle}>Popular Tropes</h2>
           <h3 className={styles.tropeTitle}>Enemies to Lovers</h3>
@@ -131,7 +130,6 @@ const Homepage = () => {
           </Carousel>
         </section>
 
-        {/* Friends to Lovers Section */}
         <section>
           <h3 className={styles.tropeTitle}>Friends to Lovers</h3>
           <Carousel
@@ -165,7 +163,7 @@ const Homepage = () => {
               <div className={styles.trope}>{selectedDrama.trope}</div>
               <p className={styles.episode}>{selectedDrama.episode}</p>
               <div className={styles.watchlistButtonWrapper}>
-                <button className={styles.addToWatchlistButton} onClick={() => console.log(`Added ${selectedDrama.title} to watchlist`)}>
+                <button className={styles.closeButton} onClick={closePopup}>
                   CLOSE
                 </button>
               </div>

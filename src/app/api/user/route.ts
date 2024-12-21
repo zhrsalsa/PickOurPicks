@@ -1,7 +1,6 @@
 import { db } from "@/lib/db"
 import { hash } from "bcrypt";
 import Email from "next-auth/providers/email";
-import { patchFetch } from "next/dist/server/app-render/entry-base";
 import { NextResponse } from "next/server";
 import { use } from "react";
 import * as z from 'zod';
