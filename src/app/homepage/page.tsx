@@ -102,7 +102,7 @@ const Homepage = () => {
       <main className="px-8 py-12">
         <div className={styles["main-sec"]}>
           <h1 className={styles.title}>
-            Welcome, {session?.user?.name || "User"}!
+            Hi, {session?.user?.name || "User"}!
           </h1>
           <p className={styles.description}>Explore dramas to watch based on trope in the story</p>
           <button className={styles.startExploreButton} onClick={handleStartExplore}>
