@@ -90,6 +90,9 @@ const Homepage = () => {
           <button className={styles.recommendationButton} onClick={handleRecommendationClick}>
             Recommendation
           </button>
+          <button className={styles.profileButton} onClick={handleRecommendationClick}>
+            Profile
+          </button>
           <button className={styles.logout} onClick={handleLogout}>
             Logout
           </button>

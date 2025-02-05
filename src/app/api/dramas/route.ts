@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 export async function GET() {
   try {
     const dramas = await prisma.drama.findMany();
-    console.log("Data from database:", dramas); // Debug output
+    console.log("Data from database:", dramas);
     return NextResponse.json(dramas);
   } catch (error) {
     console.error("Error fetching dramas:", error);
