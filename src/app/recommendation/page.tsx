@@ -102,6 +102,9 @@ const Recommendation = () => {
           <button className={styles.recommendationButton} onClick={handleRecommendationClick}>
             Recommendation
           </button>
+          <button className={styles.recommendationButton} onClick={() => router.push("/profile")}>
+            Profile
+          </button>
           <button className={styles.logout} onClick={handleLogout}>
             Logout
           </button>
