@@ -90,7 +90,7 @@ const Homepage = () => {
           <button className={styles.recommendationButton} onClick={handleRecommendationClick}>
             Recommendation
           </button>
-          <button className={styles.recommendationButton} onClick={handleRecommendationClick}>
+          <button className={styles.recommendationButton} onClick={() => router.push("/profile")}>
             Profile
           </button>
           <button className={styles.logout} onClick={handleLogout}>
