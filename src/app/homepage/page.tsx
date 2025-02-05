@@ -90,7 +90,7 @@ const Homepage = () => {
           <button className={styles.recommendationButton} onClick={handleRecommendationClick}>
             Recommendation
           </button>
-          <button className={styles.profileButton} onClick={handleRecommendationClick}>
+          <button className={styles.recommendationButton} onClick={handleRecommendationClick}>
             Profile
           </button>
           <button className={styles.logout} onClick={handleLogout}>
@@ -104,7 +104,7 @@ const Homepage = () => {
           <h1 className={styles.title}>
             Welcome, {session?.user?.name || "User"}!
           </h1>
-          <p className={styles.description}>Explore to watch based on trope in the story</p>
+          <p className={styles.description}>Explore dramas to watch based on trope in the story</p>
           <button className={styles.startExploreButton} onClick={handleStartExplore}>
             Start Explore
           </button>
