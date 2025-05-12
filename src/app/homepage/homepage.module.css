@@ -30,7 +30,6 @@
 
 .recommendationButton:hover,
 .watchlistButton:hover {
-  background-color: white;
   color: #800020;
 }
 
@@ -42,7 +41,6 @@
 }
 
 .logout:hover {
-  background-color: white;
   color: #800020;
 }
 
@@ -219,7 +217,6 @@
 
 .popup {
   position: relative;
-  /* ...other styles */
 }
 
 .closeIconButton {
@@ -250,4 +247,3 @@
 .addToWatchlistButton:hover {
   background-color: #b9201a;
 }
-
